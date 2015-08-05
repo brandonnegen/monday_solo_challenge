@@ -1,3 +1,8 @@
 .selected {
     background-color: #909090;
 }
+li {
+    font-size: 16px;
+    padding-top: 10px;
+    display: none;
+}

@@ -19,6 +19,16 @@ module.exports = function(grunt){
                 ],
                 "dest": "server/public/vendors/"
             }
+        },
+        copy: {
+            bootstrap: {
+                expand: true,
+                cwd: 'node_modules',
+                src: [
+                    "bootstrap/dist/css/bootstrap.min.css"
+                ],
+                "dest": "server/public/assets/styles/"
+            }
         }
     });
 

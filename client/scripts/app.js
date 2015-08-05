@@ -1,25 +1,25 @@
-var studentArray = [];
-var groupTotal = 0;
+var studentArray = [];//empty array ready for student names
+var groupTotal = 0;//group number to be changed after clicking the group number button
 
-function createButtons(){
+function createButtons(){//adds group number buttons to the DOM
     for(i = 2; i <= 11; i++){
-        var button = '<button class="group-number" data-number=' + [i] + '>' + i + '</button>';
+        var button = '<button class="group-number" data-number=' + [i] + '>' + i + '</button>';//used data-number in order properly link up the button click with how many groups to create
         $('.group-amount').append(button);
     }
 }
 
-function createGroups(){
+function createGroups(){//uses the newly formed groupTotal to dynamically append groups based on button click
     for(var i = 2; i <= groupTotal; i++){
-        $('.display-groups').append('<div class="teams' + i + '">Team: ' + [i] + '</div>');
+        $('.display-groups').append('<h2 class=" col-md-4 teams' + i + '">Team: ' + ([i] - 1) + '</h2>');
     }
 }
 
-function displayStudents(array){
-
+function displayStudents(array){//sends the shuffled studentArray to display on the DOM
     var groupIndex = 2;
     for(i = 2; i < array.length; i++){
-        $('.teams' + groupIndex).append('<p>' + studentArray[i] + '</p>');
-        if (groupIndex < groupTotal){
+        $('.teams' + groupIndex).append('<li class="student-list">' + studentArray[i] + '</li>');
+        $('.teams' + groupIndex + ' li').last().hide().delay(400 * i).fadeIn();//tells each li element appended to fadeIn one after the other
+        if (groupIndex < groupTotal){//this if else statement makes the li append in order from group 1, 2, 3, ect. in incrementing order and then start over back at group 1 when the last group is populated
             groupIndex++;
         } else {
             groupIndex = 2;
@@ -39,30 +39,35 @@ function shuffleStudents(array){
     return array;
 }
 
-function getData(){
+function getData(){//ajax call retrieving student name from json
     $.ajax({
         url: "/data",
         success: function(data){
             $.each(data, function(){
-               studentArray.push(this.name);
+               studentArray.push(this.name);//pushes each student name into the empty array at top
             });
             createButtons();
-            //createGroups();
         }
     });
 }
 
+//function animateStudents(){
+//    console.log("Function running");
+//    $('.student-list').each(function(i){
+//       $(this).delay(i * 400).fadeIn(400);
+//    });
+//}
+
 $(document).ready(function (){
     getData();
     $('.group-amount').on('click', '.group-number', function(){
-       groupTotal = $(this).data('number');
-        console.log(groupTotal);
+       groupTotal = $(this).data('number');//give groupTotal a new value based on which button you clicked 2-11
     });
-    $('#randomizer').on('click', function(){
+    $('#randomizer').on('click', function(){//makes it work
         shuffleStudents(studentArray);
         createGroups(studentArray);
         displayStudents(studentArray);
-       console.log('shuffling: ' + studentArray);
+        //animateStudents();
     });
 });
 
