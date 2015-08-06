@@ -18,7 +18,7 @@ function displayStudents(array){//sends the shuffled studentArray to display on 
     var groupIndex = 1;
     for(i = 1; i < array.length; i++){
         $('.teams' + groupIndex).append('<li class="student-list">' + studentArray[i] + '</li>');
-        $('.teams' + groupIndex + ' li').last().hide().delay(400 * i).fadeIn();//tells each li element appended to fadeIn one after the other
+        $('.teams' + groupIndex + ' li').last().hide().delay(400 * i).slideDown(200);//tells each li element appended to fadeIn one after the other
         if (groupIndex < groupTotal){//this if else statement makes the li append in order from group 1, 2, 3, ect. in incrementing order and then start over back at group 1 when the last group is populated
             groupIndex++;
         } else {

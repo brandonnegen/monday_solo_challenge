@@ -4,6 +4,7 @@ li {
     padding-top: 10px;
     display: none;
 }
+
 .btn {
     display: inline-block;
     padding: 6px 12px;
@@ -47,22 +48,16 @@ li {
     border-color: #285e8e;
 }
 
-/***********************
-  RAISED BUTTONS
-************************/
 .btn-primary.raised {
     box-shadow: 0 3px 0 0 #007299;
 }
+
 .btn-primary.raised:active, .btn-primary.raised.active {
     background: #33a6cc;
     box-shadow: none;
     margin-bottom: -3px;
     margin-top: 3px;
 }
-
-/***********************
-  CUSTON BTN VALUES
-************************/
 
 .btn {
     padding: 14px 24px;
@@ -72,6 +67,7 @@ li {
     text-transform: uppercase;
     margin: 20px 20px;
 }
+
 .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: 0 none;
 }
@@ -80,16 +76,20 @@ li {
     background: #0099cc;
     color: #ffffff;
 }
+
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
     background: #33a6cc;
 }
+
 .btn-primary:active, .btn-primary.active {
     background: #007299;
     box-shadow: none;
 }
+
 .all-buttons {
     text-align: center;
 }
+
 header {
     text-align: center;
     font-size: 50px;
